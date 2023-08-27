@@ -1,0 +1,15 @@
+1.antMatchers() has been changed to requestMatchers()
+
+2.signWith(SignatureAlgorithm, String secret) deprecated and u should use signWith(KEY key, SignatureAlgorithm) or signWith(Key key)
+
+3. How to fix parser() is deprecated and 'setSigningKey(java.security.Key)' is deprecated?
+	
+	SecretKey secret = Keys.hmacShaKeyFor(Decoders.BASE64.decode(key));
+	Jwts.parserBuilder().setSigningKey(secret).build().parseClaimsJws(jwt);
+	reference: https://stackoverflow.com/questions/73486900/how-to-fix-parser-is-deprecated-and-setsigningkeyjava-security-key-is-depr
+	https://github.com/jwtk/jjwt#jws-create-key
+	
+4. @Bean
+	public FilterRegistrationBean corsFilter() :
+	
+	Reference : https://spring.io/blog/2015/06/08/cors-support-in-spring-framework
